@@ -3,24 +3,19 @@
 
   <ion-chip class="setAvatar">
     <ion-avatar>
-      <img src="\assets\Spider-Man.jpg">
+      <img alt="avatar" src="\assets\Spider-Man.jpg">
     </ion-avatar>
-    <ion-label>{{dato}}</ion-label>
+    <ion-label color="dark">{{dato}}</ion-label> 
   </ion-chip>
 </ion-toolbar>
 
 <ion-content>
-  <ion-grid class="logoapp">
-    <ion-row class="ion-aling-items-center">
-      <ion-col>
-        <ion-img src="\assets\icon\LogoApp.svg"></ion-img>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <app-logo></app-logo>
 
   <p class="set-parrafo">Seleccione una modalidad de viaje</p>
 
-  <ion-button class="buttonConductor" (click)="navegar(['/conductor'])" size="large" expand="block">CONDUCTOR</ion-button> 
-  <ion-button class="buttonPasajero" (click)="navegar(['/pasajero'])" size="large" expand="block">PASAJERO</ion-button> 
+  <ion-button class="setBConductor" (click)="navegar(['/conductor'])" size="large" expand="block">CONDUCTOR</ion-button> 
+  <ion-button (click)="navegar(['/pasajero'])" size="large" expand="block">PASAJERO</ion-button>
+  <ion-button color="danger" (click)="navegar(['/not-found'])" size="large" expand="block">NO PRESIONAR</ion-button> 
 
 </ion-content>

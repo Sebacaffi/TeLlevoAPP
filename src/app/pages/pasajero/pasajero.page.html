@@ -1,16 +1,36 @@
 <ion-toolbar>
   <ion-icon class="set-icon-exit slot" slot="end" (click)="salirSesion()" name="exit-outline"></ion-icon>
-  <ion-icon class="set-icon-back" slot="start" (click)="navegar(['home'])" name="arrow-back-circle-outline"></ion-icon>
+  <app-header></app-header>
 </ion-toolbar>
 
 <ion-content>
-  <ion-grid class="logoapp">
-    <ion-row class="ion-aling-items-center">
-      <ion-col>
-        <ion-img src="\assets\icon\LogoApp.svg"></ion-img>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <app-logo></app-logo>
 
-  <ion-button (click)="generaViaje()" size="large" expand="block">BUSCAR VIAJE</ion-button> 
+  <!-- Se aplica un ngFor para recorrer el arrglo y así crear las cards necesarias -->
+  <ion-card *ngFor="let dato of viaje">
+
+    <ion-card-header>
+      <ion-item>
+        <ion-avatar slot="end">
+          <img alt="imagen" [src]="dato.imagen">
+        </ion-avatar>
+        <ion-label>
+          <ion-card-subtitle color="dark">Carrera: {{dato.destino}}</ion-card-subtitle>
+         <ion-card-title color="dark" >{{dato.conductor}}</ion-card-title>
+        </ion-label>
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-label color="dark">Destino: {{dato.destino}}</ion-label><br>
+      <ion-label color="dark">Ruta: {{dato.ruta}}</ion-label><br>
+      <ion-label color="dark">Patente: {{dato.patente}}</ion-label><br>
+      <ion-label color="dark">Valor: {{dato.valor}}</ion-label><br>
+      <br>
+      <ion-label>Sobre mi: {{dato.resumen}}</ion-label>
+    </ion-card-content>
+    
+    <ion-button class="setButton" (click)="reservarViaje()" size="large" expand="block">RESERVAR</ion-button>
+  </ion-card> 
+
 </ion-content>

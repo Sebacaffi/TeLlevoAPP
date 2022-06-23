@@ -10,7 +10,7 @@ import { AlertController } from '@ionic/angular';
 
 export class ConductorPage implements OnInit {
 
-dato:any
+datos:any
 
   constructor(private router:Router, public alertController: AlertController) {}
 
@@ -28,18 +28,8 @@ dato:any
         text: 'Cancelar'
       },{
         text: 'Aceptar',
-        handler: () => {this.router.navigate(['/login']);}
-      }]
-    });
-    await alert.present();
-  }
-
-  async generaViaje(){
-    const alert = await this.alertController.create({
-      message: 'Valor viaje $1.500 / 18:00 hrs',
-      buttons: [{
-        text: 'Aceptar',
-        handler: () => {this.router.navigate(['/home']);}
+        handler: () => {this.router.navigate(['/login']);
+        localStorage.removeItem("ingresado");}
       }]
     });
     await alert.present();

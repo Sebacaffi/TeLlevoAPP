@@ -9,13 +9,11 @@ import { AlertController } from '@ionic/angular';
 })
 
 export class HomePage implements OnInit{
-dato:any;
+
+  dato = localStorage.getItem("usuario");
+
   constructor(private router:Router, public alertController: AlertController, private activeRoute: ActivatedRoute) {
-    this.activeRoute.queryParams.subscribe(params => {
-      if(this.router.getCurrentNavigation().extras.state){
-        this.dato = this.router.getCurrentNavigation().extras.state.nombre;
-      }
-    });
+    
   }
 
   ngOnInit() {
@@ -32,7 +30,9 @@ dato:any;
         text: 'Cancelar'
       },{
         text: 'Aceptar',
-        handler: () => {this.router.navigate(['/login']);}
+        handler: () => {this.router.navigate(['/login'],);
+        localStorage.removeItem("usuario");
+        localStorage.removeItem("ingresado");}
       }]
     });
     await alert.present();
